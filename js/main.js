@@ -56,11 +56,13 @@ function checkNumber(){
             removeHeart();
             shakeMain();
             playDamageSound();
-        }else{
+        }else if (inputNumber == randomNumber){
             comment.innerHTML = "🎉 ¡FELICIDADES, HAS GANADO! 🎉";
             changeButton();
             playWinSound();
             return;
+        }else{
+            comment.innerHTML = "Digita un número válido";
         }
 
         if(attempts == maxAttempts){
