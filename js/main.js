@@ -45,13 +45,6 @@ function checkNumber(){
         
         attempts++;
 
-        if(attempts == maxAttempts){
-            comment.innerHTML = "Has perdido, el número era: " + randomNumber;
-            changeButton();
-            playDamageSound();
-            return;
-        }
-
         if(inputNumber > randomNumber){
             comment.innerHTML = "El número es menor que "+ inputNumber;
             removeHeart();
@@ -66,6 +59,13 @@ function checkNumber(){
             comment.innerHTML = "🎉 ¡FELICIDADES, HAS GANADO! 🎉";
             changeButton();
             playWinSound();
+            return;
+        }
+
+        if(attempts == maxAttempts){
+            comment.innerHTML = "Has perdido, el número era: " + randomNumber;
+            changeButton();
+            playDamageSound();
             return;
         }
 
