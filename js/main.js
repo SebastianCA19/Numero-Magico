@@ -1,6 +1,7 @@
 var randomNumber = 0;
 var maxAttempts = 10;
 var attempts = 0;
+var inputNumbers = [];
 var damageSound = new Audio("./resources/sounds/damage.mp3");
 var winSound = new Audio("./resources/sounds/victory.wav");
 
@@ -41,10 +42,18 @@ function checkNumber(){
 
     var inputNumber = document.getElementById("number").value;
     var comment = document.getElementById("comment");
+    var attemptsElement = document.getElementById("attempts");
 
     if(inputNumber != "" && !isNaN(parseInt(inputNumber))){
         
+        if(inputNumbers.includes(inputNumber)){
+            comment.innerHTML = "Ya has ingresado este número";
+            return;
+        }
+
         attempts++;
+        inputNumbers.push(inputNumber);
+        attemptsElement.innerHTML = "Intentos: " + inputNumbers.join(", ");
 
         if(inputNumber > randomNumber){
             comment.innerHTML = "El número es menor que "+ inputNumber;
